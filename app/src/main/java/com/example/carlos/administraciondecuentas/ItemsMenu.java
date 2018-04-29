@@ -38,7 +38,7 @@ public class ItemsMenu extends RecyclerView.Adapter<ItemsMenu.ItemMenuViewHolder
 
     @Override
     public int getItemCount() {
-        return 0;
+        return lista.size();
     }
 
     public class ItemMenuViewHolder extends RecyclerView.ViewHolder{
