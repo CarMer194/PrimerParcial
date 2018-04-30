@@ -24,7 +24,7 @@ public class ItemsMenu extends RecyclerView.Adapter<ItemsMenu.ItemMenuViewHolder
     public ItemsMenu.ItemMenuViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater inflater= LayoutInflater.from(mCtx);
         View v = inflater.inflate(R.layout.cardmenu,null);
-        return null;
+        return new ItemMenuViewHolder(v);
     }
 
     @Override
@@ -48,8 +48,8 @@ public class ItemsMenu extends RecyclerView.Adapter<ItemsMenu.ItemMenuViewHolder
         public ItemMenuViewHolder(View view){
             super(view);
 
-            imagen=view.findViewById(R.id.cmenu_texto);
-            texto=view.findViewById(R.id.cmenu_imagen);
+            texto=view.findViewById(R.id.cmenu_texto);
+            imagen=view.findViewById(R.id.cmenu_imagen);
         }
 
 
