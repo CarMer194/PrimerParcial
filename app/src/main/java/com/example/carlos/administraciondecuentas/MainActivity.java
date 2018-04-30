@@ -2,13 +2,8 @@ package com.example.carlos.administraciondecuentas;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.EditText;
-import android.widget.ListView;
-import java.util.ArrayList;
-//=======
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import java.util.List;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -20,7 +15,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        System.out.println("EL PACK ES:"+getPackageName());
+        //System.out.println("EL PACK ES:"+getPackageName());
 
 
         ListaM listaM = new ListaM();

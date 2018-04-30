@@ -25,9 +25,10 @@
             android:id="@+id/cuenta_text2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignLeft="@id/cuenta_text1"
+            android:layout_toStartOf="@id/cuenta_text1"
             android:layout_margin="8dp"
-            android:text="@string/cue_text1" />
+            android:text="@string/cue_text1"
+            android:layout_toLeftOf="@id/cuenta_text1" />
 
         <TextView
             android:id="@+id/cuenta_text1"
@@ -36,6 +37,63 @@
             android:layout_alignParentRight="true"
             android:layout_margin="8dp"
             android:text="$ 500" />
+        
+        <TextView
+            android:id="@+id/cue_text3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="cuenta 1"
+            android:layout_margin="8dp"
+            android:layout_toRightOf="@id/imagen_cuenta_1" />
+        <TextView
+            android:id="@+id/cuen_agregar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="agregar"
+            android:layout_margin="8dp"
+            android:layout_below="@id/cue_text3"
+            android:layout_alignLeft="@id/cue_text3"
+            />
+        
+        <ImageView
+            android:id="@+id/imagen_cuenta_2"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/ic_launcher_background"
+            android:layout_below="@id/cuen_agregar"
+            android:layout_alignLeft="@id/cuen_agregar"
+            android:layout_margin="4dp"
+            />
+        <TextView
+            android:id="@+id/cue_text4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ingreso"
+            android:layout_below="@id/cuen_agregar"
+            android:layout_toEndOf="@id/imagen_cuenta_2"
+            android:layout_margin="8dp"
+            android:layout_toRightOf="@id/imagen_cuenta_2"
+            />
+
+        <ImageView
+            android:id="@+id/imagen_cuenta_3"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/ic_launcher_background"
+            android:layout_toEndOf="@id/cue_text4"
+            android:layout_below="@id/cuen_agregar"
+            android:layout_margin="8dp"
+            android:layout_toRightOf="@id/cue_text4" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Gasto"
+            android:layout_toEndOf="@id/imagen_cuenta_3"
+            android:layout_below="@id/cuen_agregar"
+            android:layout_margin="8dp"
+            android:layout_toRightOf="@id/imagen_cuenta_3" />
+
+
 
 
     </RelativeLayout>
