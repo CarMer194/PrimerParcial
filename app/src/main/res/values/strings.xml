@@ -1,4 +1,6 @@
 <resources>
     <string name="app_name">AdministracionDeCuentas</string>
     <string name="cue_text1">total</string>
+    <string name="nombre_de_la_empresa">Nombre de la empresa</string>
+    <string name="nombre">nombre de la empresa</string>
 </resources>
