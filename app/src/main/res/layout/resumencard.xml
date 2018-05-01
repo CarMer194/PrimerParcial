@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/res_cue_fecha"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:text="@string/resum_fecha"
+                android:gravity="left"
+                android:layout_margin="10dp"/>
+            <TextView
+                android:id="@+id/res_cue_total"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="Total"
+                android:layout_margin="10dp"
+                android:textSize="20sp"
+                android:gravity="right"/>
+            
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/res_cue_imagen1"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:src="@drawable/ic_launcher_background"
+                android:layout_margin="4dp"
+                />
+            <TextView
+                android:id="@+id/res_cue_ganancia"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ganancia"
+                android:textSize="20sp"
+                android:layout_margin="4dp"
+                 />
+            <ImageView
+                android:id="@+id/res_cue_imagen2"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_margin="8dp"
+                android:src="@drawable/ic_launcher_background"
+                 />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:text="perdida"
+                android:layout_margin="4dp"
+                />
+            <ImageView
+                android:id="@+id/res_cue_imagen3"
+                android:layout_width="30dp"
+                android:layout_height="35dp"
+                android:layout_margin="4dp"
+                android:src="@drawable/ic_launcher_background"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="total"
+                android:textSize="20sp"
+                android:layout_margin="4dp"
+                />
+        </LinearLayout>
+        
+    </LinearLayout>
+
+</android.support.v7.widget.CardView>
