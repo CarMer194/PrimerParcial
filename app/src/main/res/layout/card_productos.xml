@@ -68,21 +68,24 @@
                     android:layout_height="wrap_content"
                     android:text="20"
                     android:enabled="false"
-                    android:layout_margin="2dp"/>
+                    android:layout_margin="2dp"
+                    android:id="@+id/cardproductocant"/>
                 <TextView
                     android:gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="10.00"
                     android:enabled="false"
-                    android:layout_margin="2dp"/>
+                    android:layout_margin="2dp"
+                    android:id="@+id/cardproductovent"/>
                 <TextView
                     android:gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="6.00"
                     android:enabled="false"
-                    android:layout_margin="2dp"/>
+                    android:layout_margin="2dp"
+                    android:id="@+id/cardproductocost"/>
             </TableRow>
 
         </TableLayout>
