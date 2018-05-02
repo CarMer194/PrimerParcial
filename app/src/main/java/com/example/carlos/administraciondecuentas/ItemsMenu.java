@@ -1,7 +1,9 @@
 package com.example.carlos.administraciondecuentas;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,12 +30,23 @@ public class ItemsMenu extends RecyclerView.Adapter<ItemsMenu.ItemMenuViewHolder
     }
 
     @Override
-    public void onBindViewHolder(ItemMenuViewHolder holder, int position) {
+    public void onBindViewHolder(ItemMenuViewHolder holder, final int position) {
         // Setear imagen tambien
         Uri uri= Uri.parse(lista.get(position).getIcono());
         holder.imagen.setImageURI(uri);
         holder.texto.setText(lista.get(position).getTitulo());
+        holder.card.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                switch (position){
+                    case 4:
+                        Intent intent = new Intent(mCtx, SearchableActivity.class);
+                        mCtx.startActivity(intent);
+                        break;
 
+                }
+            }
+        });
 
     }
 
@@ -45,12 +58,14 @@ public class ItemsMenu extends RecyclerView.Adapter<ItemsMenu.ItemMenuViewHolder
     public class ItemMenuViewHolder extends RecyclerView.ViewHolder{
         ImageView imagen;
         TextView texto;
+        CardView card;
 
         public ItemMenuViewHolder(View view){
             super(view);
 
             texto=view.findViewById(R.id.cmenu_texto);
             imagen=view.findViewById(R.id.cmenu_imagen);
+            card = view.findViewById(R.id.card_menu);
         }
 
 
