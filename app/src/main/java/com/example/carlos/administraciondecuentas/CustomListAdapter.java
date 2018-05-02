@@ -1,7 +1,6 @@
 package com.example.carlos.administraciondecuentas;
 
 import android.content.Context;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,8 +8,6 @@ import android.widget.BaseAdapter;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
@@ -41,7 +38,7 @@ public class CustomListAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         final ViewHolder viewHolder;
         if(convertView == null) {
-            convertView = LayoutInflater.from(context).inflate(R.layout.cardagregaringreso, parent, false);
+            convertView = LayoutInflater.from(context).inflate(R.layout.card_productos, parent, false);
             viewHolder = new ViewHolder(convertView);
             convertView.setTag(viewHolder);
         }
@@ -70,16 +67,13 @@ public class CustomListAdapter extends BaseAdapter {
         return convertView;
     }
     private class ViewHolder{
-        TextView name,precio,subtotal;
-        EditText cantidad;
-
+        TextView name,precio,subtotal,cantidad;
 
         public ViewHolder(View view){
-            name = view.findViewById(R.id.NuevoIngresoProductName);
-            precio = view.findViewById(R.id.NuevoIngresoProductPrice);
-            subtotal = view.findViewById(R.id.NuevoIngresoProductSubtotal);
-            cantidad = view.findViewById(R.id.NuevoIngresoProductQuantity);
-
+            name = view.findViewById(R.id.cardproductonom);
+            precio = view.findViewById(R.id.cardproductovent);
+            subtotal = view.findViewById(R.id.cardproductocost);
+            cantidad = view.findViewById(R.id.cardproductocant);
         }
     }
 }
