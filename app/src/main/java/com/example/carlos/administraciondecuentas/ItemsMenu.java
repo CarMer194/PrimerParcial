@@ -34,6 +34,7 @@ public class ItemsMenu extends RecyclerView.Adapter<ItemsMenu.ItemMenuViewHolder
         holder.imagen.setImageURI(uri);
         holder.texto.setText(lista.get(position).getTitulo());
 
+
     }
 
     @Override

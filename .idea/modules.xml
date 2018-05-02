@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://C:\Users\UCA\AndroidStudioProjects\PrimerParcial\AdministracionDeCuentas.iml" filepath="C:\Users\UCA\AndroidStudioProjects\PrimerParcial\AdministracionDeCuentas.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../../UCA/AndroidStudioProjects/PrimerParcial/AdministracionDeCuentas.iml" filepath="$PROJECT_DIR$/../../../UCA/AndroidStudioProjects/PrimerParcial/AdministracionDeCuentas.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/PrimerParcial.iml" filepath="$PROJECT_DIR$/.idea/PrimerParcial.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
