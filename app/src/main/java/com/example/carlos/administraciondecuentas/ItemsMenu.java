@@ -40,7 +40,7 @@ public class ItemsMenu extends RecyclerView.Adapter<ItemsMenu.ItemMenuViewHolder
             public void onClick(View v) {
                 switch (position){
                     case 4:
-                        Intent intent = new Intent(mCtx, SearchableActivity.class);
+                        Intent intent = new Intent(mCtx, SearchableActivityJosseh.class);
                         mCtx.startActivity(intent);
                         break;
 
