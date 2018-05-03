@@ -9,15 +9,17 @@
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/iv_circle"
-        android:layout_width="96dp"
-        android:layout_height="96dp"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:src="@drawable/ic_launcher_background"
         android:layout_gravity="center"
         android:layout_margin="20dp"/>
 
     <TextView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:text="@string/nombre"
         android:layout_gravity="center"
         android:textSize="20sp"
@@ -26,7 +28,8 @@
     <android.support.v7.widget.RecyclerView
         android:id="@+id/men_recy1"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="6"
         android:layout_margin="10dp"
         >
 

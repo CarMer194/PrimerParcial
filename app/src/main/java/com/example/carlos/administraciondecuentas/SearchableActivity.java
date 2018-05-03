@@ -25,11 +25,11 @@ public class SearchableActivity extends ListActivity {
 
         }
         ArrayList<Producto> productos = new ArrayList<>();
-        productos.add(new Producto("Kerla", 2.00));
+        productos.add(new Producto("SADsad", 2.00));
         productos.add(new Producto("Adri", 31.14));
         productos.add(new Producto("Perrow", 13.42));
         CustomListAdapter adapter = new CustomListAdapter(this, productos);
-        ListView items = findViewById(R.id.List_view_items);
+        ListView items = findViewById(android.R.id.list);
         items.setAdapter(adapter);
     }
 
