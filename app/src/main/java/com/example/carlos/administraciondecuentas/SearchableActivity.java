@@ -8,18 +8,20 @@ import android.support.v7.widget.SearchView;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.View;
 import android.widget.ListView;
 
 import java.util.ArrayList;
 
 public class SearchableActivity extends ListActivity {
-    ArrayList<Producto> productos;
+    ArrayList<Producto> productos,escogidos;
+    ListView items;
+    CustomListAdapter adapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_searchable);
-
-
         productos = new ArrayList<>();
         productos.add(new Producto("Kerla", 2.00));
         productos.add(new Producto("Adri", 31.14));
@@ -58,10 +60,17 @@ public class SearchableActivity extends ListActivity {
     public void doMyQuery(String query){
         for (Producto p :productos){
             if(p.getName().equals(query)){
-                CustomListAdapter adapter = new CustomListAdapter(this, productos);
-                ListView items = findViewById(R.id.List_view_items);
+                escogidos.add(p);
+                items = getListView();
+                adapter = new CustomListAdapter(this, escogidos);
                 items.setAdapter(adapter);
             }
         }
+    }
+
+    public void Cancelar(View v){
+        escogidos.clear();
+        adapter.notifyDataSetChanged();
+        items.notify();
     }
 }

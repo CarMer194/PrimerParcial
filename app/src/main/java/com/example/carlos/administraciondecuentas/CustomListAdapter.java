@@ -38,7 +38,7 @@ public class CustomListAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         final ViewHolder viewHolder;
         if(convertView == null) {
-            convertView = LayoutInflater.from(context).inflate(R.layout.card_productos, parent, false);
+            convertView = LayoutInflater.from(context).inflate(R.layout.cardagregaringreso, parent, false);
             viewHolder = new ViewHolder(convertView);
             convertView.setTag(viewHolder);
         }
@@ -58,7 +58,6 @@ public class CustomListAdapter extends BaseAdapter {
                     if (!canti.equals("")) {
                         int cant = Integer.parseInt(canti);
                         viewHolder.subtotal.setText(String.valueOf(precio * cant));
-                        Toast.makeText(v.getContext(), "Lost the focus", Toast.LENGTH_LONG).show();
                     }
                     canti = null;
                 }
@@ -70,10 +69,10 @@ public class CustomListAdapter extends BaseAdapter {
         TextView name,precio,subtotal,cantidad;
 
         public ViewHolder(View view){
-            name = view.findViewById(R.id.cardproductonom);
-            precio = view.findViewById(R.id.cardproductovent);
-            subtotal = view.findViewById(R.id.cardproductocost);
-            cantidad = view.findViewById(R.id.cardproductocant);
+            name = view.findViewById(R.id.NuevoIngresoProductName);
+            precio = view.findViewById(R.id.NuevoIngresoProductPrice);
+            subtotal = view.findViewById(R.id.NuevoIngresoProductSubtotal);
+            cantidad = view.findViewById(R.id.NuevoIngresoProductQuantity);
         }
     }
 }

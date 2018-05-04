@@ -32,15 +32,22 @@ public class ItemsMenu extends RecyclerView.Adapter<ItemsMenu.ItemMenuViewHolder
     @Override
     public void onBindViewHolder(ItemMenuViewHolder holder, final int position) {
         // Setear imagen tambien
+
         Uri uri= Uri.parse(lista.get(position).getIcono());
         holder.imagen.setImageURI(uri);
         holder.texto.setText(lista.get(position).getTitulo());
         holder.card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent;
                 switch (position){
+                    case 3:
+                        intent = new Intent(mCtx,SearchableActivity.class);
+                        mCtx.startActivity(intent);
+                        break;
+
                     case 4:
-                        Intent intent = new Intent(mCtx, SearchableActivityJosseh.class);
+                        intent = new Intent(mCtx, SearchableActivityJosseh.class);
                         mCtx.startActivity(intent);
                         break;
 
