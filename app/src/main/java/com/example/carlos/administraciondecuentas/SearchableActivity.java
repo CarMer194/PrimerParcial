@@ -4,6 +4,7 @@ import android.app.ListActivity;
 import android.app.SearchManager;
 import android.content.Context;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
 import android.util.Log;
 import android.view.Menu;
@@ -13,7 +14,7 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 
-public class SearchableActivity extends ListActivity {
+public class SearchableActivity extends AppCompatActivity {
     ArrayList<Producto> productos,escogidos;
     ListView items;
     CustomListAdapter adapter;
@@ -22,11 +23,12 @@ public class SearchableActivity extends ListActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_searchable);
+        items = findViewById(R.id.List_view_productos);
+        escogidos = new ArrayList<>();
         productos = new ArrayList<>();
         productos.add(new Producto("Kerla", 2.00));
         productos.add(new Producto("Adri", 31.14));
         productos.add(new Producto("Perrow", 13.42));
-
     }
 
     @Override
@@ -61,7 +63,6 @@ public class SearchableActivity extends ListActivity {
         for (Producto p :productos){
             if(p.getName().equals(query)){
                 escogidos.add(p);
-                items = getListView();
                 adapter = new CustomListAdapter(this, escogidos);
                 items.setAdapter(adapter);
             }
@@ -71,6 +72,6 @@ public class SearchableActivity extends ListActivity {
     public void Cancelar(View v){
         escogidos.clear();
         adapter.notifyDataSetChanged();
-        items.notify();
+
     }
 }
