@@ -66,7 +66,7 @@ public class CustomListAdapter extends BaseAdapter {
         return convertView;
     }
     private class ViewHolder{
-        TextView name,precio,subtotal,cantidad;
+        TextView name,precio,subtotal,cantidad,total;
 
         public ViewHolder(View view){
             name = view.findViewById(R.id.NuevoIngresoProductName);
