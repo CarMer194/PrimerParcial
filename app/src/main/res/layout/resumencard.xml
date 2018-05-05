@@ -16,7 +16,7 @@
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:textSize="20sp"
-                android:text="@string/resum_fecha"
+                android:text="holi"
                 android:gravity="left"
                 android:layout_margin="10dp"/>
             <TextView
