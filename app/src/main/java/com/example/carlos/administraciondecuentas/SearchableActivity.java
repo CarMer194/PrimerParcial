@@ -27,9 +27,11 @@ public class SearchableActivity extends AppCompatActivity {
         items = findViewById(R.id.List_view_productos);
         escogidos = new ArrayList<>();
         productos = new ArrayList<>();
-        productos.add(new Producto("Kerla", 5.00));
-        productos.add(new Producto("Adri", 32.14));
-        productos.add(new Producto("Perrow", 14.42));
+
+        productos.add(new Producto("Kerla", 2.00));
+        productos.add(new Producto("Adri", 31.14));
+        productos.add(new Producto("Perrow", 13.42));
+
     }
 
     @Override
@@ -40,7 +42,6 @@ public class SearchableActivity extends AppCompatActivity {
         SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
         SearchView searchView = (SearchView) menu.findItem(R.id.search).getActionView();
         // Assumes current activity is the searchable activity
-        Log.d("Component Name",getComponentName().toString());
         searchView.setSearchableInfo(searchManager.getSearchableInfo(this.getComponentName()));
         searchView.setIconifiedByDefault(false); // Do not iconify the widget; expand it by default
         searchView.setSubmitButtonEnabled(true);
@@ -73,6 +74,5 @@ public class SearchableActivity extends AppCompatActivity {
     public void Cancelar(View v){
         escogidos.clear();
         adapter.notifyDataSetChanged();
-
     }
 }

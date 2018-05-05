@@ -9,46 +9,46 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="95dp">
         <ImageView
-            android:id="@+id/ing_imagen1"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginLeft="4dp"
-            android:layout_marginTop="4dp"
-            android:layout_marginBottom="4dp"
-            android:layout_marginRight="15dp"
+            android:id="@+id/Ning_imagen1"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_margin="8dp"
             android:src="@mipmap/ic_launcher"/>
         <Spinner
-            android:id="@+id/ing_numCuenta"
+            android:id="@+id/Ning_spinner1"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:layout_margin="4dp"
-            android:layout_toEndOf="@id/ing_imagen1"
-            android:layout_toRightOf="@id/ing_imagen1" />
-        <TextView
-            android:id="@+id/ingCard_nombre"
-            android:layout_width="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerInParent="true"
+            android:layout_margin="8dp"
+            />
+        <EditText
+            android:id="@+id/Ning_edittxt_nameCli"
+            android:layout_width="110dp"
             android:layout_height="wrap_content"
-            android:text="nombre"
-            android:layout_margin="4dp"
-            android:layout_toEndOf="@id/ing_imagen1"
-            android:layout_toRightOf="@id/ing_imagen1"
-            android:layout_below="@id/ing_numCuenta"/>
+            android:hint="Nombre Cliente"
+            android:textSize="14sp"
+            android:layout_margin="8dp"
+            android:layout_centerInParent="true"
+            android:layout_below="@id/Ning_spinner1"
+            />
 
         <TextView
-            android:id="@+id/ingcard_total"
+            android:id="@+id/Ning_txtview_total"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="$17.00"
-            android:layout_marginRight="15dp"
-            android:layout_marginTop="4dp"
-            android:layout_marginBottom="4dp"
-            android:layout_marginLeft="4dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginTop="8dp"
             android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
             />
         <TextView
-            android:id="@+id/ingcard_fecha"
+            android:id="@+id/Ning_txtview_fecha"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="10/04/2018"
@@ -57,17 +57,17 @@
             android:layout_marginBottom="4dp"
             android:layout_marginLeft="4dp"
             android:layout_alignParentRight="true"
-            android:layout_below="@id/ingcard_total"
+            android:layout_alignBaseline="@id/Ning_edittxt_nameCli"
             />
 
         <TextView
-            android:id="@+id/ing_totaltext"
+            android:id="@+id/Ning_txtview_totaltxt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="total:"
-            android:layout_margin="4dp"
-            android:layout_toStartOf="@id/ingcard_total"
-            android:layout_toLeftOf="@id/ingcard_total" />
+            android:text="Total:"
+            android:layout_margin="8dp"
+            android:layout_toStartOf="@id/Ning_txtview_total"
+            android:layout_toLeftOf="@id/Ning_txtview_total" />
 
     </RelativeLayout>
 
@@ -79,16 +79,25 @@
         android:id="@+id/List_view_productos"
         />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Cancelar"
-        android:onClick="Cancelar"
-        />
-    <Button
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        android:text="Guardar"
-        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="Cancelar"
+            android:onClick="Cancelar"
+
+            />
+        <Button
+            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:text="Guardar"
+            />
+    </LinearLayout>
+
 
 </LinearLayout>
