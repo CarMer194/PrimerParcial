@@ -15,14 +15,14 @@ import com.example.carlos.administraciondecuentas.datahandling.Producto;
 
 import java.util.ArrayList;
 
-public class SearchableActivityJosseh extends ListActivity {
+public class InventoryActivity extends ListActivity {
     DataHandler dataHandler;
     ArrayList<Producto> productos;
     Bundle bundle;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_searchable_josseh);
+        setContentView(R.layout.activity_inventory);
         productos = getIntent().getParcelableArrayListExtra("ProductList");
         Intent srcIntent    = getIntent();
         if(Intent.ACTION_SEARCH.equals(srcIntent.getAction())){
