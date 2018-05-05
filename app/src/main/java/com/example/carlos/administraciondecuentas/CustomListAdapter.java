@@ -1,7 +1,6 @@
 package com.example.carlos.administraciondecuentas;
 
 import android.content.Context;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +15,7 @@ public class CustomListAdapter extends BaseAdapter {
     private Context context;
     private ArrayList<Producto> productos;
     private subTotalListener subTotalListener = null;
+    boolean isGastos = false;
 
     public CustomListAdapter(Context context,ArrayList<Producto> productos){
         this.context = context;
@@ -41,7 +41,13 @@ public class CustomListAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         final ViewHolder viewHolder;
         if(convertView == null) {
-            convertView = LayoutInflater.from(context).inflate(R.layout.cardagregaringreso, parent, false);
+            if (!isGastos) {
+                convertView = LayoutInflater.from(context).inflate(R.layout.card_agregar_ingreso, parent, false);
+            }
+            else{
+                convertView = LayoutInflater.from(context).inflate(R.layout.card_agregar_ingreso, parent, false);
+            }
+
             viewHolder = new ViewHolder(convertView);
             convertView.setTag(viewHolder);
         }
@@ -84,5 +90,9 @@ public class CustomListAdapter extends BaseAdapter {
 
     public interface subTotalListener {
         public abstract void onSubTotalUpdate(int total);
+    }
+
+    public void setGastos(boolean gastos){
+        isGastos = gastos;
     }
 }
