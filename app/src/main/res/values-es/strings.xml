@@ -1,0 +1,40 @@
+<resources>
+    <!-- main_activity -->
+    <string name="app_name">Administración de Cuentas</string>
+    <string name="main_company_name">Nombre de la Empresa</string>
+    <string name="main_summary">Resumen</string>
+    <string name="main_account">Cuentas</string>
+    <string name="main_income">Ingresos</string>
+    <string name="main_expenses">Gastos</string>
+    <string name="main_inventory">Inventario</string>
+
+    <!-- summary -->
+    <string name="summary_title">Resumen</string>
+    <string name="summary_total">Total</string>
+
+    <!-- accounts -->
+    <string name="acc_title">Cuentas</string>
+    <string name="acc_total">Total</string>
+
+    <!-- Income -->
+    <string name="income_title">Ingresos</string>
+    <string name="income_total">Total</string>
+    <string name="income_product">Producto</string>
+    <string name="income_quantity">Cantidad</string>
+    <string name="income_price">Precio</string>
+    <string name="income_subtotal">Subtotal</string>
+
+    <!-- expenses -->
+    <string name="exp_title">Gastos</string>
+    <string name="exp_total">Total</string>
+    <string name="exp_product">Producto</string>
+    <string name="exp_quantity">Cantidad</string>
+    <string name="exp_price">Precio</string>
+    <string name="exp_subtotal">Subtotal</string>
+
+    <!-- Inventory -->
+    <string name="inv_title">Inventario</string>
+    <string name="inv_cost">Costo</string>
+    <string name="inv_sell">Venta</string>
+    <string name="inv_quantity">Cantidad</string>
+</resources>

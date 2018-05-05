@@ -57,7 +57,7 @@ public class ItemsMenu extends RecyclerView.Adapter<ItemsMenu.ItemMenuViewHolder
                         mCtx.startActivity(intent);
                         break;
                     case 4:
-                        intent = new Intent(mCtx, SearchableActivityJosseh.class);
+                        intent = new Intent(mCtx, InventoryActivity.class);
                         ArrayList<Producto> productos = dataHandler.getProductList();
                         intent.putParcelableArrayListExtra("ProductList", productos);
                         mCtx.startActivity(intent);

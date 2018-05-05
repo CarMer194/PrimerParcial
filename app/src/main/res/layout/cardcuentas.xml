@@ -27,7 +27,7 @@
             android:layout_height="wrap_content"
             android:layout_toStartOf="@id/cuenta_text1"
             android:layout_margin="8dp"
-            android:text="@string/cue_text1"
+            android:text="holi"
             android:layout_toLeftOf="@id/cuenta_text1" />
 
         <TextView

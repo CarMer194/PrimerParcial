@@ -1,5 +1,6 @@
 package com.example.carlos.administraciondecuentas;
 
+import android.content.res.Resources;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -21,9 +22,8 @@ public class MainActivity extends AppCompatActivity {
         bundle = getIntent().getExtras();
         if(bundle == null){
             dataHandler = new DataHandler();
-        }
-
-        ListaM listaM = new ListaM();
+            Resources res = getResources();
+        ListaM listaM = new ListaM(res);
 
         recyclerView = findViewById(R.id.men_recy1);
         recyclerView.setHasFixedSize(true);
@@ -40,4 +40,5 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+}
 }

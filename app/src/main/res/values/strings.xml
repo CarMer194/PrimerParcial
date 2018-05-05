@@ -1,7 +1,40 @@
 <resources>
-    <string name="app_name">AdministracionDeCuentas</string>
-    <string name="cue_text1">total</string>
-    <string name="nombre_de_la_empresa">Nombre de la empresa</string>
-    <string name="nombre">nombre de la empresa</string>
-    <string name="resum_fecha">Abril 2018</string>
+    <!-- main_activity -->
+    <string name="app_name">Account Management</string>
+    <string name="main_company_name">Company Name</string>
+    <string name="main_summary">Summary</string>
+    <string name="main_account">Accounts</string>
+    <string name="main_income">Income</string>
+    <string name="main_expenses">Expenses</string>
+    <string name="main_inventory">Inventory</string>
+
+    <!-- summary -->
+    <string name="summary_title">Summary</string>
+    <string name="summary_total">Total</string>
+
+    <!-- accounts -->
+    <string name="acc_title">Accounts</string>
+    <string name="acc_total">Total</string>
+
+    <!-- Income -->
+    <string name="income_title">Income</string>
+    <string name="income_total">Total</string>
+    <string name="income_product">Product</string>
+    <string name="income_quantity">Quantity</string>
+    <string name="income_price">Price</string>
+    <string name="income_subtotal">Subtotal</string>
+
+    <!-- expenses -->
+    <string name="exp_title">Expenses</string>
+    <string name="exp_total">Total</string>
+    <string name="exp_product">Product</string>
+    <string name="exp_quantity">Quantity</string>
+    <string name="exp_price">Price</string>
+    <string name="exp_subtotal">Subtotal</string>
+
+    <!-- Inventory -->
+    <string name="inv_title">Inventory</string>
+    <string name="inv_cost">Cost</string>
+    <string name="inv_sell">Selling Price</string>
+    <string name="inv_quantity">Quantity</string>
 </resources>

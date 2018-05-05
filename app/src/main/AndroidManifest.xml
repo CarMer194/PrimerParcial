@@ -26,7 +26,7 @@
                 android:resource="@xml/searchable" />
         </activity>
 
-        <activity android:name=".SearchableActivityJosseh">
+        <activity android:name=".InventoryActivity">
             <intent-filter>
                 <action android:name="android.intent.action.SEARCH" />
             </intent-filter>
