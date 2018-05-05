@@ -11,11 +11,11 @@ import com.example.carlos.administraciondecuentas.datahandling.Producto;
 
 import java.util.ArrayList;
 
-public class CustomListAdapter extends BaseAdapter {
+public class ProductListAdapter extends BaseAdapter {
     private Context context;
     private ArrayList<Producto> productos;
 
-    public CustomListAdapter(Context context,ArrayList<Producto> productos){
+    public ProductListAdapter(Context context, ArrayList<Producto> productos){
         this.context = context;
         this.productos = productos;
     }
@@ -38,7 +38,7 @@ public class CustomListAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         final ViewHolder viewHolder;
         if(convertView == null) {
-            convertView = LayoutInflater.from(context).inflate(R.layout.cardagregaringreso, parent, false);
+            convertView = LayoutInflater.from(context).inflate(R.layout.card_productos, parent, false);
             viewHolder = new ViewHolder(convertView);
             convertView.setTag(viewHolder);
         }
@@ -66,13 +66,13 @@ public class CustomListAdapter extends BaseAdapter {
         return convertView;
     }
     private class ViewHolder{
-        TextView name,precio,subtotal,cantidad,total;
+        TextView name,precio,subtotal,cantidad;
 
         public ViewHolder(View view){
-            name = view.findViewById(R.id.NuevoIngresoProductName);
-            precio = view.findViewById(R.id.NuevoIngresoProductPrice);
-            subtotal = view.findViewById(R.id.NuevoIngresoProductSubtotal);
-            cantidad = view.findViewById(R.id.NuevoIngresoProductQuantity);
+            name = view.findViewById(R.id.cardproductonom);
+            precio = view.findViewById(R.id.cardproductocost);
+            subtotal = view.findViewById(R.id.cardproductovent);
+            cantidad = view.findViewById(R.id.cardproductocant);
         }
     }
 }

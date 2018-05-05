@@ -1,6 +1,5 @@
 package com.example.carlos.administraciondecuentas;
 
-import android.app.ListActivity;
 import android.app.SearchManager;
 import android.content.Context;
 import android.os.Bundle;
@@ -11,6 +10,8 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.widget.ListView;
+
+import com.example.carlos.administraciondecuentas.datahandling.Producto;
 
 import java.util.ArrayList;
 
@@ -26,6 +27,7 @@ public class SearchableActivity extends AppCompatActivity {
         items = findViewById(R.id.List_view_productos);
         escogidos = new ArrayList<>();
         productos = new ArrayList<>();
+
         productos.add(new Producto("Kerla", 2.00));
         productos.add(new Producto("Adri", 31.14));
         productos.add(new Producto("Perrow", 13.42));

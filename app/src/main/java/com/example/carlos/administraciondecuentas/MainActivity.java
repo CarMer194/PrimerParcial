@@ -5,17 +5,23 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
+import com.example.carlos.administraciondecuentas.datahandling.DataHandler;
+
 
 public class MainActivity extends AppCompatActivity {
     public RecyclerView recyclerView;
     public ItemsMenu adapter;
-
+    DataHandler dataHandler;
+    Bundle bundle;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         //System.out.println("EL PACK ES:"+getPackageName());
-
+        bundle = getIntent().getExtras();
+        if(bundle == null){
+            dataHandler = new DataHandler();
+        }
 
         ListaM listaM = new ListaM();
 
@@ -24,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
 
         adapter= new ItemsMenu(this, listaM.getLista());
-
+        adapter.setDataHandler(dataHandler);
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setAdapter(adapter);
 
