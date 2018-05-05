@@ -10,24 +10,25 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.widget.ListView;
 
+import com.example.carlos.administraciondecuentas.datahandling.DataHandler;
+import com.example.carlos.administraciondecuentas.datahandling.Producto;
+
 import java.util.ArrayList;
 
 public class SearchableActivityJosseh extends ListActivity {
+    DataHandler dataHandler;
+    ArrayList<Producto> productos;
+    Bundle bundle;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_searchable_josseh);
-
-        Intent srcIntent = getIntent();
+        productos = getIntent().getParcelableArrayListExtra("ProductList");
+        Intent srcIntent    = getIntent();
         if(Intent.ACTION_SEARCH.equals(srcIntent.getAction())){
             String query = srcIntent.getStringExtra(SearchManager.QUERY);
-
         }
-        ArrayList<Producto> productos = new ArrayList<>();
-        productos.add(new Producto("SADsad", 2.00));
-        productos.add(new Producto("Adri", 31.14));
-        productos.add(new Producto("Perrow", 13.42));
-        CustomListAdapter adapter = new CustomListAdapter(this, productos);
+        ProductListAdapter adapter = new ProductListAdapter(this, productos);
         ListView items = findViewById(android.R.id.list);
         items.setAdapter(adapter);
     }
