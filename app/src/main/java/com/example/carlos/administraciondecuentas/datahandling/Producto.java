@@ -1,4 +1,4 @@
-package com.example.carlos.administraciondecuentas;
+package com.example.carlos.administraciondecuentas.datahandling;
 
 import android.os.Parcel;
 import android.os.Parcelable;
