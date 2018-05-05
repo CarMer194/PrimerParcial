@@ -3,6 +3,7 @@ package com.example.carlos.administraciondecuentas;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -11,11 +12,16 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.carlos.administraciondecuentas.datahandling.DataHandler;
+import com.example.carlos.administraciondecuentas.datahandling.Producto;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class ItemsMenu extends RecyclerView.Adapter<ItemsMenu.ItemMenuViewHolder> {
     Context mCtx;
     List<ListMenu> lista;
+    DataHandler dataHandler;
 
     public ItemsMenu(Context mCtx, List<ListMenu> lista) {
         this.mCtx = mCtx;
@@ -40,6 +46,7 @@ public class ItemsMenu extends RecyclerView.Adapter<ItemsMenu.ItemMenuViewHolder
             @Override
             public void onClick(View v) {
                 Intent intent;
+                Bundle bundle;
                 switch (position){
                     case 3:
                         intent = new Intent(mCtx,SearchableActivity.class);
@@ -48,6 +55,8 @@ public class ItemsMenu extends RecyclerView.Adapter<ItemsMenu.ItemMenuViewHolder
 
                     case 4:
                         intent = new Intent(mCtx, SearchableActivityJosseh.class);
+                        ArrayList<Producto> productos = dataHandler.getProductList();
+                        intent.putParcelableArrayListExtra("ProductList", productos);
                         mCtx.startActivity(intent);
                         break;
 
@@ -76,5 +85,14 @@ public class ItemsMenu extends RecyclerView.Adapter<ItemsMenu.ItemMenuViewHolder
         }
 
 
+    }
+
+    public void setDataHandler(DataHandler dataHandler){
+        System.out.println("Se ha cargado el data handler" + dataHandler.getProductList().get(0).getName());
+        System.out.println("Se ha cargado el data handler" + dataHandler.getProductList().get(0).getName());
+        System.out.println("Se ha cargado el data handler" + dataHandler.getProductList().get(0).getName());
+        System.out.println("Se ha cargado el data handler" + dataHandler.getProductList().get(0).getName());
+        System.out.println("Se ha cargado el data handler" + dataHandler.getProductList().get(0).getName());
+        this.dataHandler = dataHandler;
     }
 }
