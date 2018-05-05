@@ -9,6 +9,7 @@
         android:layout_height="420dp"></android.support.v7.widget.RecyclerView>
 
     <Button
+        android:id="@+id/res_boton1"
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:text="+"
