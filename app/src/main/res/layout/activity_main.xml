@@ -20,7 +20,7 @@
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:text="@string/nombre"
+        android:text="@string/main_company_name"
         android:layout_gravity="center"
         android:textSize="20sp"
         android:layout_margin="8dp"/>
