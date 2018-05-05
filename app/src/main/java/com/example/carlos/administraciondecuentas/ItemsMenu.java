@@ -48,11 +48,14 @@ public class ItemsMenu extends RecyclerView.Adapter<ItemsMenu.ItemMenuViewHolder
                 Intent intent;
                 Bundle bundle;
                 switch (position){
-                    case 3:
-                        intent = new Intent(mCtx,SearchableActivity.class);
+                    case 2:
+                        intent = new Intent(mCtx,IngresosActivity.class);
                         mCtx.startActivity(intent);
                         break;
-
+                    case 3:
+                        intent = new Intent(mCtx,GastosActivity.class);
+                        mCtx.startActivity(intent);
+                        break;
                     case 4:
                         intent = new Intent(mCtx, SearchableActivityJosseh.class);
                         ArrayList<Producto> productos = dataHandler.getProductList();

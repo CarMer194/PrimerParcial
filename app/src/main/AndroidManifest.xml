@@ -36,6 +36,11 @@
                 android:resource="@xml/searchable" />
         </activity>
 
+        <activity android:name=".IngresosActivity">
+        </activity>
+        <activity android:name=".GastosActivity">
+        </activity>
+
     </application>
 
 </manifest>

@@ -1,6 +1,7 @@
 package com.example.carlos.administraciondecuentas;
 
 import android.content.Context;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,10 +15,12 @@ import java.util.ArrayList;
 public class CustomListAdapter extends BaseAdapter {
     private Context context;
     private ArrayList<Producto> productos;
+    private subTotalListener subTotalListener = null;
 
     public CustomListAdapter(Context context,ArrayList<Producto> productos){
         this.context = context;
         this.productos = productos;
+
     }
     @Override
     public int getCount() {
@@ -66,7 +69,7 @@ public class CustomListAdapter extends BaseAdapter {
         return convertView;
     }
     private class ViewHolder{
-        TextView name,precio,subtotal,cantidad,total;
+        TextView name,precio,subtotal,cantidad;
 
         public ViewHolder(View view){
             name = view.findViewById(R.id.NuevoIngresoProductName);
@@ -74,5 +77,12 @@ public class CustomListAdapter extends BaseAdapter {
             subtotal = view.findViewById(R.id.NuevoIngresoProductSubtotal);
             cantidad = view.findViewById(R.id.NuevoIngresoProductQuantity);
         }
+    }
+    public void countTotal(){
+
+    }
+
+    public interface subTotalListener {
+        public abstract void onSubTotalUpdate(int total);
     }
 }
