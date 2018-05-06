@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import com.example.carlos.administraciondecuentas.datahandling.DataHandler;
 import com.example.carlos.administraciondecuentas.datahandling.Producto;
 
 import java.util.ArrayList;
@@ -16,12 +17,13 @@ public class CustomListAdapter extends BaseAdapter {
     private Context context;
     private ArrayList<Producto> productos;
     private subTotalListener subTotalListener = null;
+    private DataHandler dataHandler;
 
-    public CustomListAdapter(Context context,ArrayList<Producto> productos){
+    public CustomListAdapter(Context context, ArrayList<Producto> productos){
         this.context = context;
         this.productos = productos;
-
     }
+
     @Override
     public int getCount() {
         return productos.size();
@@ -50,7 +52,7 @@ public class CustomListAdapter extends BaseAdapter {
         }
 
         Producto productoactual = (Producto) getItem(position);
-        final double precio = productoactual.getPrecio();
+        final double precio = productoactual.getVenta();
         viewHolder.name.setText(productoactual.getName());
         viewHolder.precio.setText(String.valueOf(precio));
         viewHolder.cantidad.setOnFocusChangeListener(new View.OnFocusChangeListener() {

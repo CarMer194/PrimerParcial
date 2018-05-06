@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.example.carlos.administraciondecuentas.datahandling.DataHandler;
 import com.example.carlos.administraciondecuentas.datahandling.Producto;
 
 import java.text.DateFormat;
@@ -25,14 +26,16 @@ public class SearchableActivity extends AppCompatActivity {
     CustomListAdapter adapter;
     TextView fecha,total;
     boolean isGastos;
+    DataHandler dataHandler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_searchable);
+        dataHandler = getIntent().getParcelableExtra("DataHandler");
         items = findViewById(R.id.List_view_productos);
         escogidos = new ArrayList<>();
-        productos = new ArrayList<>();
+        productos = dataHandler.getInventario();
 
         //seteando fecha
         fecha = findViewById(R.id.Ning_txtview_fecha);
@@ -41,10 +44,10 @@ public class SearchableActivity extends AppCompatActivity {
 
         //seteando total
         total = findViewById(R.id.Ning_txtview_total);
-
+/*
         productos.add(new Producto("Kerla", 2.00));
         productos.add(new Producto("Adri", 31.14));
-        productos.add(new Producto("Perrow", 13.42));
+        productos.add(new Producto("Perrow", 13.42));*/
 
         Intent intent = getIntent();
         isGastos = intent.getBooleanExtra("gastos",false);

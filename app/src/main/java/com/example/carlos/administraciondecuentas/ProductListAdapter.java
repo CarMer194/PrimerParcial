@@ -1,12 +1,14 @@
 package com.example.carlos.administraciondecuentas;
 
 import android.content.Context;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import com.example.carlos.administraciondecuentas.datahandling.DataHandler;
 import com.example.carlos.administraciondecuentas.datahandling.Producto;
 
 import java.util.ArrayList;
@@ -14,10 +16,13 @@ import java.util.ArrayList;
 public class ProductListAdapter extends BaseAdapter {
     private Context context;
     private ArrayList<Producto> productos;
+    private DataHandler dataHandler;
+    private subTotalListener subTotalListener = null;
 
-    public ProductListAdapter(Context context, ArrayList<Producto> productos){
+    public ProductListAdapter(Context context,DataHandler dataHandler){
         this.context = context;
-        this.productos = productos;
+        this.dataHandler = dataHandler;
+        productos = dataHandler.getInventario();
     }
     @Override
     public int getCount() {
@@ -47,32 +52,30 @@ public class ProductListAdapter extends BaseAdapter {
         }
 
         Producto productoactual = (Producto) getItem(position);
-        final double precio = productoactual.getPrecio();
-        viewHolder.name.setText(productoactual.getName());
-        viewHolder.precio.setText(String.valueOf(precio));
-        viewHolder.cantidad.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-                if(!hasFocus) {
-                    String canti = viewHolder.cantidad.getText().toString();
-                    if (!canti.equals("")) {
-                        int cant = Integer.parseInt(canti);
-                        viewHolder.subtotal.setText(String.valueOf(precio * cant));
-                    }
-                    canti = null;
-                }
-            }
-        });
+        viewHolder.id.setText(productoactual.getId());
+        viewHolder.nombre.setText(productoactual.getName());
+        viewHolder.venta.setText(Float.toString(productoactual.getVenta()));
+        viewHolder.costo.setText(Float.toString(productoactual.getCosto()));
+        viewHolder.cantidad.setText("1000");
+
         return convertView;
     }
     private class ViewHolder{
-        TextView name,precio,subtotal,cantidad;
+        TextView id, nombre, cantidad, venta, costo;
 
         public ViewHolder(View view){
-            name = view.findViewById(R.id.cardproductonom);
-            precio = view.findViewById(R.id.cardproductocost);
-            subtotal = view.findViewById(R.id.cardproductovent);
+            id = view.findViewById(R.id.cardproductoid);
+            nombre = view.findViewById(R.id.cardproductonom);
+            venta = view.findViewById(R.id.cardproductovent);
             cantidad = view.findViewById(R.id.cardproductocant);
+            costo = view.findViewById(R.id.cardproductocost);
         }
+    }
+    public void countTotal(){
+
+    }
+
+    public interface subTotalListener {
+        public abstract void onSubTotalUpdate(int total);
     }
 }

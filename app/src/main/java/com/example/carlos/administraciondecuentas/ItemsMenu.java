@@ -48,21 +48,23 @@ public class ItemsMenu extends RecyclerView.Adapter<ItemsMenu.ItemMenuViewHolder
                 Intent intent;
                 Bundle bundle;
                 switch (position){
+                    case 1:
+                        break;
                     case 2:
                         intent = new Intent(mCtx,IngresosActivity.class);
+                        intent.putExtra("DataHandler", dataHandler);
                         mCtx.startActivity(intent);
                         break;
                     case 3:
                         intent = new Intent(mCtx,GastosActivity.class);
+                        intent.putExtra("DataHandler", dataHandler);
                         mCtx.startActivity(intent);
                         break;
                     case 4:
                         intent = new Intent(mCtx, InventoryActivity.class);
-                        ArrayList<Producto> productos = dataHandler.getProductList();
-                        intent.putParcelableArrayListExtra("ProductList", productos);
+                        intent.putExtra("DataHandler", dataHandler);
                         mCtx.startActivity(intent);
                         break;
-
                 }
             }
         });
@@ -91,11 +93,11 @@ public class ItemsMenu extends RecyclerView.Adapter<ItemsMenu.ItemMenuViewHolder
     }
 
     public void setDataHandler(DataHandler dataHandler){
-        System.out.println("Se ha cargado el data handler" + dataHandler.getProductList().get(0).getName());
-        System.out.println("Se ha cargado el data handler" + dataHandler.getProductList().get(0).getName());
-        System.out.println("Se ha cargado el data handler" + dataHandler.getProductList().get(0).getName());
-        System.out.println("Se ha cargado el data handler" + dataHandler.getProductList().get(0).getName());
-        System.out.println("Se ha cargado el data handler" + dataHandler.getProductList().get(0).getName());
+        System.out.println("Se ha cargado el data handler");
+        System.out.println("Se ha cargado el data handler" );
+        System.out.println("Se ha cargado el data handler" );
+        System.out.println("Se ha cargado el data handler" );
+        System.out.println("Se ha cargado el data handler" );
         this.dataHandler = dataHandler;
     }
 }

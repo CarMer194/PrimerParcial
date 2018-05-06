@@ -23,12 +23,12 @@ public class InventoryActivity extends ListActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inventory);
-        productos = getIntent().getParcelableArrayListExtra("ProductList");
+        dataHandler = getIntent().getParcelableExtra("DataHandler");
         Intent srcIntent    = getIntent();
         if(Intent.ACTION_SEARCH.equals(srcIntent.getAction())){
             String query = srcIntent.getStringExtra(SearchManager.QUERY);
         }
-        ProductListAdapter adapter = new ProductListAdapter(this, productos);
+        ProductListAdapter adapter = new ProductListAdapter(this, dataHandler);
         ListView items = findViewById(android.R.id.list);
         items.setAdapter(adapter);
     }
