@@ -1,4 +1,4 @@
-package com.example.carlos.administraciondecuentas;
+package com.example.carlos.administraciondecuentas.Adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -7,23 +7,23 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import com.example.carlos.administraciondecuentas.datahandling.DataHandler;
+import com.example.carlos.administraciondecuentas.CustomListAdapter;
+import com.example.carlos.administraciondecuentas.R;
 import com.example.carlos.administraciondecuentas.datahandling.Producto;
 
 import java.util.ArrayList;
 
-public class CustomListAdapter extends BaseAdapter {
+public class IngresosProductsAdapter extends BaseAdapter {
     private Context context;
     private ArrayList<Producto> productos;
-    private subTotalListener subTotalListener = null;
-    private DataHandler dataHandler;
+    private CustomListAdapter.subTotalListener subTotalListener = null;
     boolean isGastos = false;
 
-    public CustomListAdapter(Context context, ArrayList<Producto> productos){
+    public IngresosProductsAdapter(Context context,ArrayList<Producto> productos){
         this.context = context;
         this.productos = productos;
-    }
 
+    }
     @Override
     public int getCount() {
         return productos.size();
@@ -41,7 +41,7 @@ public class CustomListAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        final ViewHolder viewHolder;
+        final IngresosProductsAdapter.ViewHolder viewHolder;
         if(convertView == null) {
             if (!isGastos) {
                 convertView = LayoutInflater.from(context).inflate(R.layout.card_agregar_ingreso, parent, false);
@@ -50,15 +50,15 @@ public class CustomListAdapter extends BaseAdapter {
                 convertView = LayoutInflater.from(context).inflate(R.layout.card_agregar_ingreso, parent, false);
             }
 
-            viewHolder = new ViewHolder(convertView);
+            viewHolder = new IngresosProductsAdapter.ViewHolder(convertView);
             convertView.setTag(viewHolder);
         }
         else{
-            viewHolder = (ViewHolder) convertView.getTag();
+            viewHolder = (IngresosProductsAdapter.ViewHolder) convertView.getTag();
         }
 
         Producto productoactual = (Producto) getItem(position);
-        final double precio = productoactual.getVenta();
+        final double precio = productoactual.getPrecio();
         viewHolder.name.setText(productoactual.getName());
         viewHolder.precio.setText(String.valueOf(precio));
         viewHolder.cantidad.setOnFocusChangeListener(new View.OnFocusChangeListener() {

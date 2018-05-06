@@ -4,6 +4,7 @@ import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
 import android.view.Menu;
@@ -31,11 +32,26 @@ public class SearchableActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_searchable);
         dataHandler = getIntent().getParcelableExtra("DataHandler");
         items = findViewById(R.id.List_view_productos);
         escogidos = new ArrayList<>();
         productos = dataHandler.getInventario();
+
+        //Agarrando intent de la activity anterior para proyectar otro layout
+        Intent intent = getIntent();
+        isGastos = intent.getBooleanExtra("gastos",false);
+
+        //Seteando layout en base al booleano recibido en el intent
+        if (!isGastos)
+            setContentView(R.layout.activity_searchable_ingresos);
+        else
+            setContentView(R.layout.activity_searchable_gastos);
+
+        escogidos = new ArrayList<>();
+
+        //seteando el ID la Listview
+        items = findViewById(R.id.List_view_productos);
+
 
         //seteando fecha
         fecha = findViewById(R.id.Ning_txtview_fecha);
@@ -44,13 +60,6 @@ public class SearchableActivity extends AppCompatActivity {
 
         //seteando total
         total = findViewById(R.id.Ning_txtview_total);
-/*
-        productos.add(new Producto("Kerla", 2.00));
-        productos.add(new Producto("Adri", 31.14));
-        productos.add(new Producto("Perrow", 13.42));*/
-
-        Intent intent = getIntent();
-        isGastos = intent.getBooleanExtra("gastos",false);
 
     }
 
@@ -84,15 +93,16 @@ public class SearchableActivity extends AppCompatActivity {
     public void doMyQuery(String query){
         for (Producto p :productos){
             if(p.getName().equals(query)){
-                escogidos.add(p);
-                if(isGastos) {
-                    //poner adapter de gastos
+                if(escogidos.size()==0) {
+                    escogidos.add(p);
                     adapter = new CustomListAdapter(this, escogidos);
+                    adapter.setGastos(isGastos);
+                    items.setAdapter(adapter);
                 }
                 else{
-                    adapter = new CustomListAdapter(this, escogidos);
+                    escogidos.add(p);
+                    adapter.notifyDataSetChanged();
                 }
-                items.setAdapter(adapter);
             }
         }
     }

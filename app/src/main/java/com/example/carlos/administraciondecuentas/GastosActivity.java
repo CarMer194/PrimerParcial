@@ -12,9 +12,10 @@ import com.example.carlos.administraciondecuentas.datahandling.DataHandler;
 public class GastosActivity extends AppCompatActivity {
     private DataHandler dataHandler;
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
+
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         dataHandler = getIntent().getParcelableExtra("DataHandler");
-        super.onCreate(savedInstanceState, persistentState);
         setContentView(R.layout.gastos_layout);
     }
 
