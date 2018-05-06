@@ -9,4 +9,20 @@ import java.util.HashMap;
 public class Ingreso {
     private HashMap<String, String> ingresoProducto;
     private String nombreCuenta;
+
+    public HashMap<String, String> getIngresoProducto() {
+        return ingresoProducto;
+    }
+
+    public void setIngresoProducto(HashMap<String, String> ingresoProducto) {
+        this.ingresoProducto = ingresoProducto;
+    }
+
+    public String getNombreCuenta() {
+        return nombreCuenta;
+    }
+
+    public void setNombreCuenta(String nombreCuenta) {
+        this.nombreCuenta = nombreCuenta;
+    }
 }

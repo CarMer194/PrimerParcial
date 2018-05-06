@@ -4,17 +4,33 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 public class Producto implements Parcelable{
+    String id;
     String name;
-    double precio;
+    float venta;
+    float costo;
+    int cantidad;
+    String imagen;
 
-    public Producto(String name,double precio){
-        this.name=name;
-        this.precio=precio;
+
+    public Producto(String id, String name, float venta, float costo, int cantidad,String imagen) {
+        this.id = id;
+        this.name = name;
+        this.venta = venta;
+        this.costo = costo;
+        this.cantidad = cantidad;
+        this.imagen=imagen;
+    }
+
+    public Producto() {
     }
 
     protected Producto(Parcel in) {
+        id = in.readString();
         name = in.readString();
-        precio = in.readDouble();
+        venta = in.readFloat();
+        costo = in.readFloat();
+        cantidad = in.readInt();
+        imagen = in.readString();
     }
 
     public static final Creator<Producto> CREATOR = new Creator<Producto>() {
@@ -29,6 +45,14 @@ public class Producto implements Parcelable{
         }
     };
 
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
     public String getName() {
         return name;
     }
@@ -37,12 +61,28 @@ public class Producto implements Parcelable{
         this.name = name;
     }
 
-    public double getPrecio() {
-        return precio;
+    public float getVenta() {
+        return venta;
     }
 
-    public void setPrecio(double precio) {
-        this.precio = precio;
+    public void setVenta(float venta) {
+        this.venta = venta;
+    }
+
+    public float getCosto() {
+        return costo;
+    }
+
+    public void setCosto(float costo) {
+        this.costo = costo;
+    }
+
+    public int getCantidad() {
+        return cantidad;
+    }
+
+    public void setCantidad(int cantidad) {
+        this.cantidad = cantidad;
     }
 
     @Override
@@ -52,7 +92,11 @@ public class Producto implements Parcelable{
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(id);
         dest.writeString(name);
-        dest.writeDouble(precio);
+        dest.writeFloat(venta);
+        dest.writeFloat(costo);
+        dest.writeInt(cantidad);
+        dest.writeString(imagen);
     }
 }
