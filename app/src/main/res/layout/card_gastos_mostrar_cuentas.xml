@@ -19,7 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <ImageView
-                android:id="@+id/ing_imagen1"
+                android:id="@+id/card_gastos_imagen"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_marginLeft="4dp"
@@ -28,25 +28,25 @@
                 android:layout_marginRight="15dp"
                 android:src="@mipmap/ic_launcher"/>
             <TextView
-                android:id="@+id/ing_numCuenta"
+                android:id="@+id/card_gastos_cuenta"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="cuenta1"
                 android:layout_margin="4dp"
-                android:layout_toEndOf="@id/ing_imagen1"
-                android:layout_toRightOf="@id/ing_imagen1" />
+                android:layout_toEndOf="@id/card_gastos_imagen"
+                android:layout_toRightOf="@id/card_gastos_imagen" />
             <TextView
-                android:id="@+id/ingCard_nombre"
+                android:id="@+id/card_gastos_nombre"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="nombre"
                 android:layout_margin="4dp"
-                android:layout_toEndOf="@id/ing_imagen1"
-                android:layout_toRightOf="@id/ing_imagen1"
-                android:layout_below="@id/ing_numCuenta"/>
+                android:layout_toEndOf="@id/card_gastos_imagen"
+                android:layout_toRightOf="@id/card_gastos_imagen"
+                android:layout_below="@id/card_gastos_cuenta"/>
 
             <TextView
-                android:id="@+id/ingcard_total"
+                android:id="@+id/card_gastos_total"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="$17.00"
@@ -57,7 +57,7 @@
                 android:layout_alignParentRight="true"
                 />
             <TextView
-                android:id="@+id/ingcard_fecha"
+                android:id="@+id/card_gastos_fecha"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="10/04/2018"
@@ -66,17 +66,17 @@
                 android:layout_marginBottom="4dp"
                 android:layout_marginLeft="4dp"
                 android:layout_alignParentRight="true"
-                android:layout_below="@id/ingcard_total"
+                android:layout_below="@id/card_gastos_total"
                 />
 
             <TextView
-                android:id="@+id/ing_totaltext"
+                android:id="@+id/card_gastos_totaltxt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="total:"
+                android:text="Total:"
                 android:layout_margin="4dp"
-                android:layout_toStartOf="@id/ingcard_total"
-                android:layout_toLeftOf="@id/ingcard_total" />
+                android:layout_toStartOf="@id/card_gastos_total"
+                android:layout_toLeftOf="@id/card_gastos_total" />
 
         </RelativeLayout>
 
@@ -113,7 +113,7 @@
 
         <ListView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="200dp"
             android:id="@+id/card_gastos_listview">
 
 

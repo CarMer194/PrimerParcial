@@ -10,6 +10,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.widget.ListView;
 
+import com.example.carlos.administraciondecuentas.Adapters.ProductListAdapter;
 import com.example.carlos.administraciondecuentas.datahandling.DataHandler;
 import com.example.carlos.administraciondecuentas.datahandling.Producto;
 

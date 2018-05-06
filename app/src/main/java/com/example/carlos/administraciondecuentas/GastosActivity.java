@@ -17,6 +17,8 @@ public class GastosActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         dataHandler = getIntent().getParcelableExtra("DataHandler");
         setContentView(R.layout.gastos_layout);
+
+
     }
 
     public void NuevoGasto(View v){

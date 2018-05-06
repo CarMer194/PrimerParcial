@@ -1,18 +1,23 @@
 package com.example.carlos.administraciondecuentas;
 
+import android.app.Activity;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.example.carlos.administraciondecuentas.Adapters.CustomListAdapter;
+import com.example.carlos.administraciondecuentas.datahandling.Cuenta;
 import com.example.carlos.administraciondecuentas.datahandling.DataHandler;
 import com.example.carlos.administraciondecuentas.datahandling.Producto;
 
@@ -23,18 +28,18 @@ import java.util.Locale;
 
 public class SearchableActivity extends AppCompatActivity {
     ArrayList<Producto> productos,escogidos;
+    ArrayList<Cuenta> cuentas;
     ListView items;
     CustomListAdapter adapter;
-    TextView fecha,total;
+    TextView fecha,total,nombreCli;
     boolean isGastos;
     DataHandler dataHandler;
+    Spinner spinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         dataHandler = getIntent().getParcelableExtra("DataHandler");
-        items = findViewById(R.id.List_view_productos);
-        escogidos = new ArrayList<>();
         productos = dataHandler.getInventario();
 
         //Agarrando intent de la activity anterior para proyectar otro layout
@@ -47,11 +52,14 @@ public class SearchableActivity extends AppCompatActivity {
         else
             setContentView(R.layout.activity_searchable_gastos);
 
+        //instanceando los productos escogidos
         escogidos = new ArrayList<>();
 
         //seteando el ID la Listview
         items = findViewById(R.id.List_view_productos);
 
+        //seteando el Id a nombre
+        nombreCli = findViewById(R.id.Ning_edittxt_nameCli);
 
         //seteando fecha
         fecha = findViewById(R.id.Ning_txtview_fecha);
@@ -61,6 +69,17 @@ public class SearchableActivity extends AppCompatActivity {
         //seteando total
         total = findViewById(R.id.Ning_txtview_total);
 
+        //seteando el spinner
+        spinner = findViewById(R.id.Ning_spinner1);
+        String [] cuentas = new String[dataHandler.getCuentas().size()];
+        int i = 0;
+        for(Cuenta c:dataHandler.getCuentas()){
+           cuentas[i] = c.getNombre();
+           i++;
+        }
+        ArrayAdapter<String> Arradapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,cuentas);
+        Arradapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(Arradapter);
     }
 
     @Override
@@ -112,5 +131,25 @@ public class SearchableActivity extends AppCompatActivity {
             escogidos.clear();
             adapter.notifyDataSetChanged();
         }
+    }
+
+    public void Guardar(View v){
+        Log.d("Se dio click a guardar","true");
+        cuentas = dataHandler.getCuentas();
+        String nombreCuenta = spinner.getSelectedItem().toString();
+        String temp = this.total.getText().toString();
+        String fstring = temp.substring(temp.lastIndexOf('$') + 1);
+        float total = Float.parseFloat(fstring);
+        String nombre = nombreCli.getText().toString();
+        cuentas.add(new Cuenta(nombre,nombreCuenta,total,escogidos));
+        dataHandler.setCuentas(cuentas);
+        Log.d("Tamano de cuentas SA",String.valueOf(dataHandler.getCuentas().size()));
+    }
+
+    public void onBackPressed(){
+        Intent returnIntent = new Intent();
+        returnIntent.putExtra("result",dataHandler);
+        setResult(Activity.RESULT_OK,returnIntent);
+        finish();
     }
 }

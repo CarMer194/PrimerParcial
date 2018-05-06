@@ -1,4 +1,4 @@
-package com.example.carlos.administraciondecuentas;
+package com.example.carlos.administraciondecuentas.Adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import com.example.carlos.administraciondecuentas.R;
 import com.example.carlos.administraciondecuentas.datahandling.DataHandler;
 import com.example.carlos.administraciondecuentas.datahandling.Producto;
 
@@ -43,13 +44,7 @@ public class CustomListAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         final ViewHolder viewHolder;
         if(convertView == null) {
-            if (!isGastos) {
-                convertView = LayoutInflater.from(context).inflate(R.layout.card_agregar_ingreso, parent, false);
-            }
-            else{
-                convertView = LayoutInflater.from(context).inflate(R.layout.card_agregar_ingreso, parent, false);
-            }
-
+            convertView = LayoutInflater.from(context).inflate(R.layout.card_agregar_ingreso, parent, false);
             viewHolder = new ViewHolder(convertView);
             convertView.setTag(viewHolder);
         }

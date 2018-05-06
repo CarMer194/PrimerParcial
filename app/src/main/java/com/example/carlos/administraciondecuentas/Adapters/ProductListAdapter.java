@@ -1,4 +1,4 @@
-package com.example.carlos.administraciondecuentas;
+package com.example.carlos.administraciondecuentas.Adapters;
 
 import android.content.Context;
 import android.view.KeyEvent;
@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import com.example.carlos.administraciondecuentas.R;
 import com.example.carlos.administraciondecuentas.datahandling.DataHandler;
 import com.example.carlos.administraciondecuentas.datahandling.Producto;
 
