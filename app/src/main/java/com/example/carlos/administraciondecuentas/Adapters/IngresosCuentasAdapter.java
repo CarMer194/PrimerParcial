@@ -28,12 +28,12 @@ public class IngresosCuentasAdapter extends RecyclerView.Adapter<IngresosCuentas
     public IngresosCuentasAdapter(Context context,ArrayList<Cuenta> cuentas){
         this.context = context;
         this.cuentas = cuentas;
-        size = 0;
+        /*size = 0;
         for(Cuenta c:cuentas){
-            if(c.getIngresoProductos()!=null){
+            if(c.getIngresoProductos().size()>0){
                 size=size+1;
             }
-        }
+        }*/
     }
 
     @Override
@@ -61,7 +61,7 @@ public class IngresosCuentasAdapter extends RecyclerView.Adapter<IngresosCuentas
 
     @Override
     public int getItemCount() {
-        return size;
+        return cuentas.size();
     }
 
 

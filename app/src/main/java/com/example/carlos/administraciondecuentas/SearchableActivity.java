@@ -28,7 +28,6 @@ import java.util.Locale;
 
 public class SearchableActivity extends AppCompatActivity {
     ArrayList<Producto> productos,escogidos;
-    ArrayList<Cuenta> cuentas;
     ListView items;
     CustomListAdapter adapter;
     TextView fecha,total,nombreCli;
@@ -134,22 +133,25 @@ public class SearchableActivity extends AppCompatActivity {
     }
 
     public void Guardar(View v){
+        //Guardando los cambios en base a los textviews y spinner
         Log.d("Se dio click a guardar","true");
+        ArrayList<Cuenta> cuentas = new ArrayList<>();
         cuentas = dataHandler.getCuentas();
         String nombreCuenta = spinner.getSelectedItem().toString();
         String temp = this.total.getText().toString();
         String fstring = temp.substring(temp.lastIndexOf('$') + 1);
         float total = Float.parseFloat(fstring);
         String nombre = nombreCli.getText().toString();
-        cuentas.add(new Cuenta(nombre,nombreCuenta,total,escogidos));
+        cuentas.add(new Cuenta(nombreCuenta,nombre,total,new ArrayList<Producto>(escogidos)));
         dataHandler.setCuentas(cuentas);
-        Log.d("Tamano de cuentas SA",String.valueOf(dataHandler.getCuentas().size()));
     }
 
     public void onBackPressed(){
+        //retornando nuevo dataHandler
         Intent returnIntent = new Intent();
         returnIntent.putExtra("result",dataHandler);
         setResult(Activity.RESULT_OK,returnIntent);
         finish();
+        super.onBackPressed();
     }
 }

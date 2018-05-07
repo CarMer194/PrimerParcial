@@ -53,14 +53,9 @@ public class IngresosActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == 1) {
             if(resultCode == Activity.RESULT_OK){
+
                 dataHandler = data.getParcelableExtra("result");
                 ingresosCuentasAdapter = new IngresosCuentasAdapter(this, dataHandler.getCuentas());
-                Log.d("Tamano de cuentas IA",String.valueOf(dataHandler.getCuentas().size()));
-                for(Cuenta c:dataHandler.getCuentas()){
-                    Log.d("entra al for","Pero no al if");
-                    if(c.getIngresoProductos()!=null)
-                        Log.d("Tamanode lista producto",String.valueOf(c.getIngresoProductos().size()));
-                }
                 LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
                 recyclerView.setLayoutManager(linearLayoutManager);
                 recyclerView.setAdapter(ingresosCuentasAdapter);

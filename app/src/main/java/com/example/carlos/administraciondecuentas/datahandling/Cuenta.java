@@ -27,6 +27,7 @@ public class Cuenta implements Parcelable{
         this.nombre = nombre;
         this.nombreTitular = nombreTitular;
         this.total = total;
+        this.ingresoProductos = new ArrayList<>();
         this.ingresoProductos = ingresoProductos;
         gastoProductos= new ArrayList<>();
     }
@@ -41,6 +42,8 @@ public class Cuenta implements Parcelable{
         ingreso = in.readFloat();
         total = in.readFloat();
         nombreTitular = in.readString();
+        ingresoProductos = in.createTypedArrayList(Producto.CREATOR);
+        gastoProductos = in.createTypedArrayList(Producto.CREATOR);
     }
 
     public static final Creator<Cuenta> CREATOR = new Creator<Cuenta>() {
@@ -132,5 +135,7 @@ public class Cuenta implements Parcelable{
         dest.writeFloat(ingreso);
         dest.writeFloat(total);
         dest.writeString(nombreTitular);
+        dest.writeTypedList(ingresoProductos);
+        dest.writeTypedList(gastoProductos);
     }
 }
