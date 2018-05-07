@@ -134,7 +134,7 @@ public class SearchableActivity extends AppCompatActivity {
 
     public void Guardar(View v){
         //Guardando los cambios en base a los textviews y spinner
-        Log.d("Se dio click a guardar","true");
+
         ArrayList<Cuenta> cuentas = new ArrayList<>();
         cuentas = dataHandler.getCuentas();
         String nombreCuenta = spinner.getSelectedItem().toString();
@@ -142,7 +142,7 @@ public class SearchableActivity extends AppCompatActivity {
         String fstring = temp.substring(temp.lastIndexOf('$') + 1);
         float total = Float.parseFloat(fstring);
         String nombre = nombreCli.getText().toString();
-        cuentas.add(new Cuenta(nombreCuenta,nombre,total,new ArrayList<Producto>(escogidos)));
+        cuentas.add(new Cuenta(nombreCuenta,nombre,total,new ArrayList<Producto>(escogidos),isGastos));
         dataHandler.setCuentas(cuentas);
     }
 

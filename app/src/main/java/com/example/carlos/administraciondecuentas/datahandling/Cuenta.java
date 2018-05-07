@@ -23,13 +23,20 @@ public class Cuenta implements Parcelable{
         gastoProductos= new ArrayList<>();
     }
 
-    public Cuenta(String nombre, String nombreTitular,float total, ArrayList<Producto> ingresoProductos){
+    public Cuenta(String nombre, String nombreTitular,float total, ArrayList<Producto> Productos,boolean isGastos){
         this.nombre = nombre;
         this.nombreTitular = nombreTitular;
         this.total = total;
-        this.ingresoProductos = new ArrayList<>();
-        this.ingresoProductos = ingresoProductos;
-        gastoProductos= new ArrayList<>();
+        if(isGastos){
+            this.ingresoProductos = new ArrayList<>();
+            gastoProductos= Productos;
+        }
+        else{
+            this.ingresoProductos = Productos;
+            gastoProductos= new ArrayList<>();
+        }
+
+
     }
 
     public Cuenta() {

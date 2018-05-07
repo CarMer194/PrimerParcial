@@ -13,9 +13,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.carlos.administraciondecuentas.datahandling.DataHandler;
-import com.example.carlos.administraciondecuentas.datahandling.Producto;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class ItemsMenu extends RecyclerView.Adapter<ItemsMenu.ItemMenuViewHolder> {
@@ -51,13 +49,15 @@ public class ItemsMenu extends RecyclerView.Adapter<ItemsMenu.ItemMenuViewHolder
                     case 1:
                         break;
                     case 2:
-                        intent = new Intent(mCtx,IngresosActivity.class);
+                        intent = new Intent(mCtx,IngresosGastosActivity.class);
                         intent.putExtra("DataHandler", dataHandler);
+                        intent.putExtra("isGastos",false);
                         mCtx.startActivity(intent);
                         break;
                     case 3:
-                        intent = new Intent(mCtx,GastosActivity.class);
+                        intent = new Intent(mCtx,IngresosGastosActivity.class);
                         intent.putExtra("DataHandler", dataHandler);
+                        intent.putExtra("isGastos",true);
                         mCtx.startActivity(intent);
                         break;
                     case 4:
