@@ -21,9 +21,9 @@ public class DataHandler implements Parcelable{
         cuentas.add(new Cuenta("Cuenta 1", "Josseh", 0, new ArrayList<Producto>(), false));
         //Definiendo el inventario
         inventario = new ArrayList<Producto>();
-        inventario.add(new Producto("w41fu", "Kerla", 3.1416f, 2.75f,1, "ella.jpg" ));
-        inventario.add(new Producto("w41fuD3r0dr1", "Adri", 31.14f, 5.75f,1, "ellader0dr1.jpg" ));
-        inventario.add(new Producto("l0l1s4br0s4", "Zoe bb", 99.99f, 50.23f,1, "ella.jpg" ));
+        inventario.add(new Producto("T075", "Producto 1", 3.1416f, 2.75f,1, "ella.jpg" ));
+        inventario.add(new Producto("T076", "Producto 2", 31.14f, 5.75f,1, "ellader0dr1.jpg" ));
+        inventario.add(new Producto("T077", "Producto 3", 99.99f, 50.23f,1, "ella.jpg" ));
     }
 
     // INICIO IMPLEMENTACION PARCELABLE
