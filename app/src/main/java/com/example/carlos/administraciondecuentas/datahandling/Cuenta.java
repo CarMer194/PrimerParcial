@@ -4,6 +4,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 public class Cuenta implements Parcelable{
     int id;
@@ -12,6 +13,8 @@ public class Cuenta implements Parcelable{
     float ingreso;
     float total;
     String nombreTitular;
+    String[] temp;
+    String dia,mes,año;
     ArrayList<Producto> ingresoProductos;
     ArrayList<Producto> gastoProductos;
 
@@ -21,6 +24,7 @@ public class Cuenta implements Parcelable{
         this.nombreTitular = nombreTitular;
         ingresoProductos= new ArrayList<>();
         gastoProductos= new ArrayList<>();
+        iniciarFecha();
     }
 
     public Cuenta(String nombre, String nombreTitular,float total, ArrayList<Producto> Productos,boolean isGastos){
@@ -35,9 +39,17 @@ public class Cuenta implements Parcelable{
             this.ingresoProductos = Productos;
             gastoProductos= new ArrayList<>();
         }
-
+        iniciarFecha();
 
     }
+    private void iniciarFecha(){
+        Date fecha = new Date();
+        temp = fecha.toString().split(" ");
+        dia = temp[2];
+        mes = temp[1];
+        año = temp[5];
+    }
+
 
     public Cuenta() {
     }
@@ -51,6 +63,9 @@ public class Cuenta implements Parcelable{
         nombreTitular = in.readString();
         ingresoProductos = in.createTypedArrayList(Producto.CREATOR);
         gastoProductos = in.createTypedArrayList(Producto.CREATOR);
+        dia=in.readString();
+        mes=in.readString();
+        año=in.readString();
     }
 
     public static final Creator<Cuenta> CREATOR = new Creator<Cuenta>() {
@@ -144,5 +159,8 @@ public class Cuenta implements Parcelable{
         dest.writeString(nombreTitular);
         dest.writeTypedList(ingresoProductos);
         dest.writeTypedList(gastoProductos);
+        dest.writeString(dia);
+        dest.writeString(mes);
+        dest.writeString(año);
     }
 }

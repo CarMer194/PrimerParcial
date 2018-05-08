@@ -46,7 +46,15 @@ public class ItemsMenu extends RecyclerView.Adapter<ItemsMenu.ItemMenuViewHolder
                 Intent intent;
                 Bundle bundle;
                 switch (position){
+                    case 0:
+                        intent = new Intent(mCtx,Resumen_Activity.class);
+                        intent.putExtra("DataHandler",dataHandler);
+                        mCtx.startActivity(intent);
+                        break;
                     case 1:
+                        intent = new Intent(mCtx,Resumen_Activity.class);
+                        intent.putExtra("DataHandler",dataHandler);
+                        mCtx.startActivity(intent);
                         break;
                     case 2:
                         intent = new Intent(mCtx,IngresosGastosActivity.class);
