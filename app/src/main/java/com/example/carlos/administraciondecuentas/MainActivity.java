@@ -1,11 +1,15 @@
 package com.example.carlos.administraciondecuentas;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.widget.ListView;
 
+import com.example.carlos.administraciondecuentas.Adapters.ProductListAdapter;
 import com.example.carlos.administraciondecuentas.datahandling.DataHandler;
 
 
@@ -41,4 +45,12 @@ public class MainActivity extends AppCompatActivity {
 
 
 }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+            dataHandler = data.getParcelableExtra("result");
+            adapter.setDataHandler(dataHandler);
+        super.onActivityResult(requestCode, resultCode, data);
+    }
+
 }

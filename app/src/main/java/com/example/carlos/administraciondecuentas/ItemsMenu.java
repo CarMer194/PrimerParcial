@@ -1,5 +1,6 @@
 package com.example.carlos.administraciondecuentas;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
@@ -27,7 +28,7 @@ public class ItemsMenu extends RecyclerView.Adapter<ItemsMenu.ItemMenuViewHolder
     }
 
     @Override
-    public ItemsMenu.ItemMenuViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public ItemMenuViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater inflater= LayoutInflater.from(mCtx);
         View v = inflater.inflate(R.layout.cardmenu,null);
         return new ItemMenuViewHolder(v);
@@ -52,7 +53,7 @@ public class ItemsMenu extends RecyclerView.Adapter<ItemsMenu.ItemMenuViewHolder
                         mCtx.startActivity(intent);
                         break;
                     case 1:
-                        intent = new Intent(mCtx,Resumen_Activity.class);
+                        intent = new Intent(mCtx,Cuentas_Activity.class);
                         intent.putExtra("DataHandler",dataHandler);
                         mCtx.startActivity(intent);
                         break;
@@ -60,18 +61,18 @@ public class ItemsMenu extends RecyclerView.Adapter<ItemsMenu.ItemMenuViewHolder
                         intent = new Intent(mCtx,IngresosGastosActivity.class);
                         intent.putExtra("DataHandler", dataHandler);
                         intent.putExtra("isGastos",false);
-                        mCtx.startActivity(intent);
+                        ((Activity)mCtx).startActivityForResult(intent, 2);
                         break;
                     case 3:
                         intent = new Intent(mCtx,IngresosGastosActivity.class);
                         intent.putExtra("DataHandler", dataHandler);
                         intent.putExtra("isGastos",true);
-                        mCtx.startActivity(intent);
+                        ((Activity)mCtx).startActivityForResult(intent, 2);
                         break;
                     case 4:
                         intent = new Intent(mCtx, InventoryActivity.class);
                         intent.putExtra("DataHandler", dataHandler);
-                        mCtx.startActivity(intent);
+                        ((Activity)mCtx).startActivityForResult(intent, 3);
                         break;
                 }
             }

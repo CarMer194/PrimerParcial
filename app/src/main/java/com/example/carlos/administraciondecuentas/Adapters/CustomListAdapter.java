@@ -1,6 +1,7 @@
 package com.example.carlos.administraciondecuentas.Adapters;
 
 import android.content.Context;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -53,20 +54,21 @@ public class CustomListAdapter extends BaseAdapter {
         }
 
         Producto productoactual = (Producto) getItem(position);
-        final float precio = productoactual.getVenta();
+        final float precio;
+        if(isGastos) precio = productoactual.getCosto();
+        else precio = productoactual.getVenta();
         viewHolder.name.setText(productoactual.getName());
         viewHolder.precio.setText(String.valueOf(precio));
-        viewHolder.cantidad.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+        viewHolder.cantidad.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-                if(!hasFocus) {
-                    String canti = viewHolder.cantidad.getText().toString();
-                    if (!canti.equals("")) {
-                        int cant = Integer.parseInt(canti);
-                        viewHolder.subtotal.setText(String.valueOf(precio * cant));
-                    }
-                    canti = null;
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                String canti = viewHolder.cantidad.getText().toString();
+                if (!canti.equals("")) {
+                    int cant = Integer.parseInt(canti);
+                    viewHolder.subtotal.setText(String.valueOf(precio * cant));
                 }
+                canti = null;
+                return false;
             }
         });
         return convertView;

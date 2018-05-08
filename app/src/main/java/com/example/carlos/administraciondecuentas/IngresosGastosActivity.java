@@ -10,6 +10,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import com.example.carlos.administraciondecuentas.Adapters.IngresosGastosCuentasAdapter;
 import com.example.carlos.administraciondecuentas.datahandling.Cuenta;
@@ -80,9 +81,18 @@ public class IngresosGastosActivity extends AppCompatActivity {
                     recyclerView.setBackgroundColor(Color.YELLOW);
             }
             if (resultCode == Activity.RESULT_CANCELED) {
-                //Write your code if there's no result
+                //
             }
         }
         super.onActivityResult(requestCode, resultCode, data);
+    }
+
+    public void onBackPressed() {
+        //retornando nuevo dataHandler
+        Intent returnIntent = new Intent();
+        returnIntent.putExtra("result",dataHandler);
+        setResult(2,returnIntent);
+        finish();
+        super.onBackPressed();
     }
 }

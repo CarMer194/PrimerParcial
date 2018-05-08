@@ -144,6 +144,18 @@ public class Cuenta implements Parcelable{
         this.gastoProductos = gastoProductos;
     }
 
+    public String getDia() {
+        return dia;
+    }
+
+    public String getMes() {
+        return mes;
+    }
+
+    public String getAño() {
+        return año;
+    }
+
     @Override
     public int describeContents() {
         return 0;

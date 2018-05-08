@@ -18,11 +18,7 @@ public class DataHandler implements Parcelable{
     public DataHandler(){
         //Definiendo arraylist de cuentas
         cuentas = new ArrayList<Cuenta>();
-        cuentas.add(new Cuenta(1,"cuenta1","Josseh blanco"));
-        cuentas.add(new Cuenta(2,"cuenta2","Rodrigo Rovelo"));
-        cuentas.add(new Cuenta(3,"cuenta3","Noe Portillo"));
-
-
+        cuentas.add(new Cuenta("Cuenta 1", "Josseh", 0, new ArrayList<Producto>(), false));
         //Definiendo el inventario
         inventario = new ArrayList<Producto>();
         inventario.add(new Producto("w41fu", "Kerla", 3.1416f, 2.75f,1, "ella.jpg" ));
@@ -77,4 +73,21 @@ public class DataHandler implements Parcelable{
     public void setInventario(ArrayList<Producto> inventario) {
         this.inventario = inventario;
     }
+
+    public void removeProduct(String productName, int amnt){
+        for(int i = 0; i < this.getInventario().size(); i++){
+            if(productName == getInventario().get(i).getName()){
+                getInventario().get(i).setCantidad(getInventario().get(i).getCantidad() - amnt);
+            }
+        }
+    }
+
+    public void addProduct(String productName, int amnt){
+        for(int i = 0; i < this.getInventario().size(); i++){
+            if(productName == getInventario().get(i).getName()){
+                getInventario().get(i).setCantidad(getInventario().get(i).getCantidad() + amnt);
+            }
+        }
+    }
 }
+

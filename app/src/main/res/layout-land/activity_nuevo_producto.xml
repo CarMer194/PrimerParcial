@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:layout_margin="8dp"
+    android:background="@color/nuevo_producto_color"
+    >
+
+
+    <ImageView
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:src="@color/cardview_dark_background"
+        android:layout_alignParentTop="true"
+        android:layout_margin="16dp"
+        android:id="@+id/NuevoProductoImage"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nombre del Producto: "
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="8dp"
+
+        android:textColor="#000"
+        android:id="@+id/NuevoProductoTxtviewName"
+        android:layout_marginStart="8dp" />
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Nombre del Producto"
+        android:textSize="14sp"
+        android:layout_below="@id/NuevoProductoTxtviewName"
+        android:layout_marginRight="8dp"
+        android:layout_marginLeft="8dp"
+        android:id="@+id/NuevoProductoEditTxtName"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Código"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="8dp"
+        android:layout_toRightOf="@id/NuevoProductoTxtviewName"
+        android:layout_toEndOf="@id/NuevoProductoTxtviewName"
+        android:layout_marginLeft="24dp"
+        android:id="@+id/NuevoProductoTxtViewCode"
+        />
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Ingrese Código"
+        android:layout_alignStart="@id/NuevoProductoTxtViewCode"
+        android:textSize="14sp"
+        android:layout_marginTop="4dp"
+        android:layout_alignBaseline="@id/NuevoProductoEditTxtName"
+        android:layout_below="@id/NuevoProductoTxtViewCode"
+        android:id="@+id/NuevoProductoEditTxtCode"
+        android:layout_alignLeft="@id/NuevoProductoTxtViewCode" />
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="80"
+        android:textSize="14sp"
+        android:inputType="number"
+        android:layout_below="@id/NuevoProductoTxtViewCant"
+        android:layout_alignStart="@id/NuevoProductoTxtViewCant"
+        android:layout_alignLeft="@id/NuevoProductoTxtViewCant"
+        android:id="@+id/NuevoProductoEditTxtCant"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cantidad"
+        android:layout_alignBaseline="@id/NUevoProductoTxtViewPV"
+        android:layout_below="@id/NuevoProductoEditTxtName"
+        android:layout_alignStart="@id/NuevoProductoEditTxtName"
+        android:layout_alignLeft="@id/NuevoProductoEditTxtName"
+        android:id="@+id/NuevoProductoTxtViewCant"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Precio de Venta"
+        android:layout_below="@id/NuevoProductoEditTxtCode"
+        android:layout_marginTop="8dp"
+        android:layout_alignStart="@id/NuevoProductoTxtViewCode"
+        android:layout_alignLeft="@id/NuevoProductoTxtViewCode"
+        android:id="@+id/NUevoProductoTxtViewPV"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Precio de Compra"
+        android:layout_below="@id/NuevoProductoEditTxtCant"
+        android:layout_marginTop="4dp"
+        android:layout_alignStart="@id/NuevoProductoTxtViewCant"
+        android:id="@+id/NUevoProductoTxtViewPC"
+        android:layout_alignLeft="@id/NuevoProductoTxtViewCant" />
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="17.00"
+        android:textSize="14sp"
+        android:layout_below="@id/NUevoProductoTxtViewPV"
+        android:layout_marginTop="4dp"
+        android:inputType="numberDecimal"
+        android:layout_alignStart="@id/NUevoProductoTxtViewPV"
+        android:layout_alignLeft="@id/NUevoProductoTxtViewPV"
+        android:id="@+id/NuevoProductoEditTxtPV"/>
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="17.00"
+        android:textSize="14sp"
+        android:inputType="numberDecimal"
+        android:layout_below="@id/NUevoProductoTxtViewPC"
+        android:layout_marginTop="4dp"
+        android:layout_alignStart="@id/NUevoProductoTxtViewPC"
+        android:layout_alignLeft="@id/NUevoProductoTxtViewPC"
+        android:id="@+id/NuevoProductoEditTxtPC"
+        />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cancelar"
+        android:layout_below="@id/NuevoProductoEditTxtPV"
+        android:textSize="12sp"
+        android:layout_alignStart="@id/NuevoProductoEditTxtPV"
+        android:layout_alignLeft="@id/NuevoProductoEditTxtPV"
+        android:id="@+id/NuevoProductoButton"
+        android:onClick="CancelarProducto"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Guardar"
+        android:layout_below="@id/NuevoProductoButton"
+        android:textSize="12sp"
+        android:layout_alignStart="@id/NuevoProductoButton"
+        android:layout_alignLeft="@id/NuevoProductoButton"
+        android:onClick="GuardarProducto"
+        />
+
+
+</RelativeLayout>

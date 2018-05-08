@@ -4,12 +4,27 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".InventoryActivity">
 
     <ListView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@android:id/list"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:id="@+id/Lista_productos"
+        />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fbtn"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_gravity="end"
+        android:layout_margin="15dp"
+        android:src="@drawable/ic_action_add"
+        app:backgroundTint="#e4fa3d3d"
+        app:borderWidth="0dp"
+        app:elevation="5dp"
+        android:onClick="NuevoProducto"
         />
 
 </LinearLayout>

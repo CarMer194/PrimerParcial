@@ -73,9 +73,10 @@ public class SearchableActivity extends AppCompatActivity {
 
         //seteando el spinner
         spinner = findViewById(R.id.Ning_spinner1);
-        String [] cuentas = new String[3];
-        for(int i = 0;i<3;i++){
-           cuentas[i] = "Cuenta "+String.valueOf(i+1);
+        int size = dataHandler.getCuentas().size();
+        String [] cuentas = new String[size];
+        for(int i = 0;i<size;i++){
+           cuentas[i] = dataHandler.getCuentas().get(i).getNombre();
         }
         ArrayAdapter<String> Arradapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,cuentas);
         Arradapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -179,6 +180,7 @@ public class SearchableActivity extends AppCompatActivity {
                 Toast.makeText(this, "Por favor ingresar un Cliente", Toast.LENGTH_SHORT).show();
             } else if (!nombreCli.getText().toString().equals("")) {
                 if(si && aux) {
+                    /*
                     ArrayList<Cuenta> cuentas = new ArrayList<>();
                     cuentas = dataHandler.getCuentas();
                     String nombreCuenta = spinner.getSelectedItem().toString();
@@ -186,9 +188,30 @@ public class SearchableActivity extends AppCompatActivity {
                     String fstring = temp.substring(temp.lastIndexOf('$') + 1);
                     float total = Float.parseFloat(fstring);
                     String nombre = nombreCli.getText().toString();
-                    cuentas.add(new Cuenta(nombreCuenta, nombre, total, new ArrayList<Producto>(escogidos), isGastos));
-                    dataHandler.setCuentas(cuentas);
-                    Toast.makeText(this, "Se ha añadido la cuenta", Toast.LENGTH_SHORT).show();
+                    cuentas.add(new Cuenta(nombreCuenta, nombre, total, ;
+                    dataHandler.setCuentas(cuentas);*/
+                    if(!isGastos){
+                        if(dataHandler.getCuentas().get(spinner.getSelectedItemPosition()).getIngresoProductos() == null){
+                            dataHandler.getCuentas().get(spinner.getSelectedItemPosition()).setIngresoProductos(new ArrayList<Producto>(escogidos));
+                        }else{
+                            ArrayList<Producto> previous = dataHandler.getCuentas().get(spinner.getSelectedItemPosition()).getIngresoProductos();
+                            ArrayList<Producto> escogido = new ArrayList<>(escogidos);
+                            escogido.addAll(previous);
+                            dataHandler.getCuentas().get(spinner.getSelectedItemPosition()).setIngresoProductos(escogido);
+                        }
+                    }else{
+                        if(dataHandler.getCuentas().get(spinner.getSelectedItemPosition()).getIngresoProductos() == null){
+                            dataHandler.getCuentas().get(spinner.getSelectedItemPosition()).setIngresoProductos(new ArrayList<Producto>(escogidos));
+                        }else{
+                            ArrayList<Producto> previous = dataHandler.getCuentas().get(spinner.getSelectedItemPosition()).getGastoProductos();
+                            ArrayList<Producto> escogido = new ArrayList<>(escogidos);
+                            escogido.addAll(previous);
+                            dataHandler.getCuentas().get(spinner.getSelectedItemPosition()).setGastoProductos(escogido);
+                        }
+                    }
+
+                    Toast.makeText(this, "Se ha añadido al historial de ingresos.", Toast.LENGTH_SHORT).show();
+                    this.onBackPressed();
                 }
             }
         }

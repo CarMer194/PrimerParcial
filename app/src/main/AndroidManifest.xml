@@ -41,6 +41,13 @@
 
         <activity android:name=".IngresosGastosActivity">
         </activity>
+        <activity android:name=".NuevoProductoActivity">
+        </activity>
+
+        <activity android:name=".Cuentas_Activity">
+        </activity>
+        <activity android:name=".Resumen_Activity">
+        </activity>
 
     </application>
 
