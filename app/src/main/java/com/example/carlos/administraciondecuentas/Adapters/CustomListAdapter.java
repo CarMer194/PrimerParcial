@@ -53,7 +53,7 @@ public class CustomListAdapter extends BaseAdapter {
         }
 
         Producto productoactual = (Producto) getItem(position);
-        final double precio = productoactual.getVenta();
+        final float precio = productoactual.getVenta();
         viewHolder.name.setText(productoactual.getName());
         viewHolder.precio.setText(String.valueOf(precio));
         viewHolder.cantidad.setOnFocusChangeListener(new View.OnFocusChangeListener() {

@@ -8,13 +8,16 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.carlos.administraciondecuentas.Adapters.CustomListAdapter;
 import com.example.carlos.administraciondecuentas.datahandling.Cuenta;
@@ -34,7 +37,7 @@ public class SearchableActivity extends AppCompatActivity {
     boolean isGastos;
     DataHandler dataHandler;
     Spinner spinner;
-
+    TextView cantidad,subtotal;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,11 +73,9 @@ public class SearchableActivity extends AppCompatActivity {
 
         //seteando el spinner
         spinner = findViewById(R.id.Ning_spinner1);
-        String [] cuentas = new String[dataHandler.getCuentas().size()];
-        int i = 0;
-        for(Cuenta c:dataHandler.getCuentas()){
-           cuentas[i] = c.getNombre();
-           i++;
+        String [] cuentas = new String[3];
+        for(int i = 0;i<3;i++){
+           cuentas[i] = "Cuenta "+String.valueOf(i+1);
         }
         ArrayAdapter<String> Arradapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,cuentas);
         Arradapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -116,10 +117,31 @@ public class SearchableActivity extends AppCompatActivity {
                     adapter = new CustomListAdapter(this, escogidos);
                     adapter.setGastos(isGastos);
                     items.setAdapter(adapter);
+                    for(int i = 0;i<items.getCount();i++) {
+                        Log.d("entra al for","si");
+                        subtotal = getViewByPosition(i, items).findViewById(R.id.NuevoIngresoProductSubtotal);
+                        subtotal.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+                            @Override
+                            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                                String sub = subtotal.getText().toString();
+                                String temp = total.getText().toString();
+                                String fstring = temp.substring(temp.lastIndexOf('$') + 1);
+                                float t = Float.parseFloat(fstring);
+                                t = t+Float.parseFloat(sub);
+                                String fin = "$ "+String.valueOf(t);
+                                total.setText(fin);
+                                return false;
+                            }
+                        });
+                    }
                 }
                 else{
-                    escogidos.add(p);
-                    adapter.notifyDataSetChanged();
+                    if(escogidos.contains(p)){
+                        Toast.makeText(this,"No se puede agregar el mismo producto",Toast.LENGTH_LONG).show();
+                    }else {
+                        escogidos.add(p);
+                        adapter.notifyDataSetChanged();
+                    }
                 }
             }
         }
@@ -134,24 +156,66 @@ public class SearchableActivity extends AppCompatActivity {
 
     public void Guardar(View v){
         //Guardando los cambios en base a los textviews y spinner
+        boolean si = false,aux = true;
+        String cant;
+        for(int i = 0;i<items.getCount();i++) {
+            cantidad = getViewByPosition(i, items).findViewById(R.id.NuevoIngresoProductQuantity);
+            cant = cantidad.getText().toString();
+            if (cant.equals("")) {
+                Toast.makeText(this, "Favor Ingresar cantidad", Toast.LENGTH_SHORT).show();
+                aux = false;
+            } if(!cant.equals("")) {
+                si = true;
+                escogidos.get(i).setCantidad(Integer.parseInt(cant));
+            }
+        }
+        //
+        //VERIFICACIONES
+        //
+        if(items.getCount()>0){
+            if (nombreCli.getText().toString().equals("") && isGastos) {
+                Toast.makeText(this, "Por favor ingresar un Proveedor", Toast.LENGTH_SHORT).show();
+            } else if (nombreCli.getText().toString().equals("") && !isGastos) {
+                Toast.makeText(this, "Por favor ingresar un Cliente", Toast.LENGTH_SHORT).show();
+            } else if (!nombreCli.getText().toString().equals("")) {
+                if(si && aux) {
+                    ArrayList<Cuenta> cuentas = new ArrayList<>();
+                    cuentas = dataHandler.getCuentas();
+                    String nombreCuenta = spinner.getSelectedItem().toString();
+                    String temp = this.total.getText().toString();
+                    String fstring = temp.substring(temp.lastIndexOf('$') + 1);
+                    float total = Float.parseFloat(fstring);
+                    String nombre = nombreCli.getText().toString();
+                    cuentas.add(new Cuenta(nombreCuenta, nombre, total, new ArrayList<Producto>(escogidos), isGastos));
+                    dataHandler.setCuentas(cuentas);
+                    Toast.makeText(this, "Se ha añadido la cuenta", Toast.LENGTH_SHORT).show();
+                }
+            }
+        }
+        else{
+            Toast.makeText(this,"Por favor ingresar al menos un producto",Toast.LENGTH_SHORT).show();
+        }
 
-        ArrayList<Cuenta> cuentas = new ArrayList<>();
-        cuentas = dataHandler.getCuentas();
-        String nombreCuenta = spinner.getSelectedItem().toString();
-        String temp = this.total.getText().toString();
-        String fstring = temp.substring(temp.lastIndexOf('$') + 1);
-        float total = Float.parseFloat(fstring);
-        String nombre = nombreCli.getText().toString();
-        cuentas.add(new Cuenta(nombreCuenta,nombre,total,new ArrayList<Producto>(escogidos),isGastos));
-        dataHandler.setCuentas(cuentas);
     }
 
     public void onBackPressed(){
         //retornando nuevo dataHandler
         Intent returnIntent = new Intent();
         returnIntent.putExtra("result",dataHandler);
+        returnIntent.putExtra("isGastos",isGastos);
         setResult(Activity.RESULT_OK,returnIntent);
         finish();
         super.onBackPressed();
+    }
+    public View getViewByPosition(int pos, ListView listView) {
+        final int firstListItemPosition = listView.getFirstVisiblePosition();
+        final int lastListItemPosition = firstListItemPosition + listView.getChildCount() - 1;
+
+        if (pos < firstListItemPosition || pos > lastListItemPosition ) {
+            return listView.getAdapter().getView(pos, null, listView);
+        } else {
+            final int childIndex = pos - firstListItemPosition;
+            return listView.getChildAt(childIndex);
+        }
     }
 }

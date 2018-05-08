@@ -14,6 +14,7 @@ import android.view.View;
 import com.example.carlos.administraciondecuentas.Adapters.IngresosGastosCuentasAdapter;
 import com.example.carlos.administraciondecuentas.datahandling.Cuenta;
 import com.example.carlos.administraciondecuentas.datahandling.DataHandler;
+import com.example.carlos.administraciondecuentas.datahandling.Producto;
 
 public class IngresosGastosActivity extends AppCompatActivity {
     private DataHandler dataHandler;
@@ -68,6 +69,7 @@ public class IngresosGastosActivity extends AppCompatActivity {
             if(resultCode == Activity.RESULT_OK){
 
                 dataHandler = data.getParcelableExtra("result");
+                isGastos = data.getBooleanExtra("isGastos",false);
                 ingresosGastosCuentasAdapter = new IngresosGastosCuentasAdapter(this, dataHandler.getCuentas(),isGastos);
                 LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
                 recyclerView.setLayoutManager(linearLayoutManager);

@@ -2,6 +2,7 @@ package com.example.carlos.administraciondecuentas.Adapters;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,7 @@ import android.widget.TextView;
 
 import com.example.carlos.administraciondecuentas.R;
 import com.example.carlos.administraciondecuentas.datahandling.Cuenta;
+import com.example.carlos.administraciondecuentas.datahandling.Producto;
 
 import java.text.DateFormat;
 import java.util.ArrayList;
@@ -21,6 +23,7 @@ public class IngresosGastosCuentasAdapter extends RecyclerView.Adapter<IngresosG
     private Context context;
     private ArrayList<Cuenta> cuentas;
     boolean isGastos = false;
+    IngresosProductsAdapter adapter;
 
     public IngresosGastosCuentasAdapter(Context context, ArrayList<Cuenta> cuentas, boolean isGastos){
         this.context = context;
@@ -39,17 +42,17 @@ public class IngresosGastosCuentasAdapter extends RecyclerView.Adapter<IngresosG
 
 
         Cuenta cuentaactual = cuentas.get(holder.getAdapterPosition());
-        if(cuentaactual.getIngresoProductos() != null && isGastos == false) {
+        if(cuentaactual.getIngresoProductos().size() >0  && isGastos == false) {
             holder.nombreCuenta.setText(cuentaactual.getNombre());
             holder.nombre.setText(cuentaactual.getNombreTitular());
             holder.Total.setText(String.valueOf(cuentaactual.getTotal()));
 
             DateFormat df = DateFormat.getDateInstance(DateFormat.LONG, Locale.getDefault());
             holder.fecha.setText(df.format(new Date()));
-
-            holder.lista.setAdapter(new IngresosProductsAdapter(context, cuentaactual.getIngresoProductos()));
+            adapter = new IngresosProductsAdapter(context,cuentaactual.getIngresoProductos());
+            holder.lista.setAdapter(adapter);
         }
-        if(cuentaactual.getGastoProductos() != null && isGastos == true){
+        if(cuentaactual.getGastoProductos().size()>0 && isGastos == true){
             holder.nombreCuenta.setText(cuentaactual.getNombre());
             holder.nombre.setText(cuentaactual.getNombreTitular());
             holder.Total.setText(String.valueOf(cuentaactual.getTotal()));
